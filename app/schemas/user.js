@@ -8,7 +8,10 @@ var userSchema = new mongoose.Schema({
 		type: String
 	},
 	password: String,
-
+    role: {
+        type: String,
+        default: 'user'
+    },  //role可以是user，admin
     // meta 更新或录入数据的时间记录
     meta: {
         createAt: {
