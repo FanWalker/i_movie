@@ -1,16 +1,26 @@
 //后台电影处理
 var Movie = require('../models/movie'); //载入mongoose编译后的模型movie
 var _ = require('underscore'); //_.extend用新对象里的字段替换来的字段
+var Comment = require('../models/comment');
 
 //detail page 详情页
 exports.detail = function(req,res){
 		var id = req.params.id;
+
 		Movie.findById(id,function(err,movie){
-			res.render('detail',{
-				title: movie.title,
-				movie: movie
-			})
-		})
+			//console.log(Comment)
+			Comment.find({movie: id})
+							.populate('from','name')
+							.populate('reply.from reply.to','name')
+							.exec(function(err, comments){
+								//console.log(comments);
+								res.render('detail',{
+									title: movie.title,
+									movie: movie,
+									comments: comments
+							})
+						})
+				})
 	}
 
 	//admin page 后台录入页
@@ -55,7 +65,7 @@ exports.save = function(req, res){
 				}
 
 				_movie = _.extend(movie, movieObj);
-				console.log(_movie);
+				//console.log(_movie);
 				_movie.save(function(err,movie){
 					if (err) {
 						console.log(err);

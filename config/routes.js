@@ -1,6 +1,7 @@
 var Index = require('../app/controllers/index'); //载入mongoose编译后的模型movie
 var User = require('../app/controllers/user');
 var Movie = require('../app/controllers/movie');
+var Comment = require('../app/controllers/comment');
 
 module.exports = function(app){ 
 	app.use(function(req, res, next){
@@ -23,7 +24,7 @@ module.exports = function(app){
 	//登出
 	app.get('/user/logout', User.logout)
 	//用户列表
-	app.get('/admin/userlist',User.signinRequired, User.adminRequired, User.userlist)
+	app.get('/admin/user/list',User.signinRequired, User.adminRequired, User.userlist)
 
 
 /*电影处理*/
@@ -32,12 +33,14 @@ module.exports = function(app){
 	//admin page 后台录入页
 	app.get('/admin/movie', Movie.new)
 	//admin update movie 后台更新页
-	app.get('/admin/update/:id', Movie.update)
+	app.get('/admin/movie/update/:id',User.signinRequired, User.adminRequired, Movie.update)
 	// admin post movie 后台录入提交
-	app.post('/admin/movie/new', Movie.save)
+	app.post('/admin/movie/new',User.signinRequired, User.adminRequired, Movie.save)
 	//list page列表页
-	app.get('/admin/list', Movie.movielist)
+	app.get('/admin/movie/list',User.signinRequired, User.adminRequired, Movie.movielist)
 	// list delete movie data 列表页删除电影
-	app.delete('/admin/list', Movie.del)
+	app.delete('/admin/movie/list',User.signinRequired, User.adminRequired, Movie.del)
 
+/*评论*/
+	app.post('/user/comment',User.signinRequired, Comment.save)
 }

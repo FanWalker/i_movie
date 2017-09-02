@@ -29,7 +29,7 @@ exports.signup = function(req, res){
 							console.log(err);
 						}
 					//res.redirect('/admin/userlist');
-					res.redirect('/');
+					res.redirect('/signin');
 				})
 			}
 		})
@@ -97,6 +97,7 @@ exports.signinRequired = function(req, res, next){
 exports.adminRequired = function(req, res, next){
 	var user = req.session.user;
 	if(typeof(user.role) === 'undefined' ||user.role === "" || user.role !== 'admin'){
+		console.log("用户权限不够，请重新登录");
 		res.redirect('/signin');
 	}
 	next();
