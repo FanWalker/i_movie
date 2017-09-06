@@ -3,6 +3,8 @@ var User = require('../app/controllers/user');
 var Movie = require('../app/controllers/movie');
 var Comment = require('../app/controllers/comment');
 var Category = require('../app/controllers/category');
+var multer = require('multer');
+var upload = multer({dest: 'public/upload/'})
 
 module.exports = function(app){ 
 	app.use(function(req, res, next){
@@ -36,7 +38,7 @@ module.exports = function(app){
 	//admin update movie 后台更新页
 	app.get('/admin/movie/update/:id',User.signinRequired, User.adminRequired, Movie.update)
 	// admin post movie 后台录入提交
-	app.post('/admin/movie/new',User.signinRequired, User.adminRequired,  Movie.save)  //Movie.savePoster,
+	app.post('/admin/movie/new',User.signinRequired, User.adminRequired,upload.single('uploadPoster'), Movie.savePoster, Movie.save)
 	//list page列表页
 	app.get('/admin/movie/list',User.signinRequired, User.adminRequired, Movie.movielist)
 	// list delete movie data 列表页删除电影

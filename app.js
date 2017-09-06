@@ -8,6 +8,8 @@ var mongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var logger = require('morgan');
 var serverStatic = require('serve-static');
+
+
 var dbUrl = 'mongodb://localhost:27017/imovie';
 var app = express();
 

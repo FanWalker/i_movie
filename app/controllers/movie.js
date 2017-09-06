@@ -11,7 +11,11 @@ exports.detail = function(req,res){
 		var id = req.params.id;
 
 		Movie.findById(id,function(err,movie){
-			//console.log(Comment)
+			Movie.update({_id:id},{$inc:{pv:1}},function(err){
+				if(err){
+					console.log(err);
+				}
+			})
 			Comment.find({movie: id})
 							.populate('from','name')
 							.populate('reply.from reply.to','name')
@@ -52,19 +56,20 @@ exports.update = function(req,res){
 		}
 	}
 
-/*//admin poster
+//admin poster
 exports.savePoster = function(req, res,next){
-	var posterData = req.files.uploadPoster
-	var filePath = posterData.path
-	var originalFilename = posterData.originalFilename //文件原始名字
+	var posterData = req.file    //req.file是"uploadPoster"文件信息
+	console.log(posterData)       //查看posterData具体信息
+	var filePath = posterData.path    
+	var originalFilename = posterData.originalname //文件原始名字
 
 	if(originalFilename){   //有文件名字，判断文件上传
 		fs.readFile(filePath, function(err, data){
 			var timestamp = Date.now()
-			var type = posterData.type.split('/')[1]
+			var type = posterData.mimetype.split('/')[1]
 			var poster = timestamp + '.' + type
-			var newPath = path.join(_dirname,'../../','/public/upload'+poster)
-
+			var newPath = path.join(__dirname,'../../','/public/upload/'+poster)
+			console.log('新路径为：'+newPath)
 			fs.writeFile(newPath,data,function(err){
 				req.poster = poster
 				next()
@@ -75,11 +80,13 @@ exports.savePoster = function(req, res,next){
 		next()
 	}
 }
-*/
+
 	// admin post movie 后台录入提交
 exports.save = function(req, res){
-		var id = req.body.movie._id
+		var id = req.body.movie._id    //这里的req.body是文本与数据
 		var movieObj = req.body.movie;
+		var Obj = req.body;
+		console.log(Obj);
 		var _movie
 
 		if(req.poster){
