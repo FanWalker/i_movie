@@ -60,9 +60,10 @@ exports.update = function(req,res){
 exports.savePoster = function(req, res,next){
 	var posterData = req.file    //req.file是"uploadPoster"文件信息
 	console.log(posterData)       //查看posterData具体信息
-	var filePath = posterData.path    
-	var originalFilename = posterData.originalname //文件原始名字
-
+	if(posterData){
+		var filePath = posterData.path    
+		var originalFilename = posterData.originalname //文件原始名字
+	}
 	if(originalFilename){   //有文件名字，判断文件上传
 		fs.readFile(filePath, function(err, data){
 			var timestamp = Date.now()

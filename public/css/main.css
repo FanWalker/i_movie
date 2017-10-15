@@ -1,0 +1,36 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-size: 2em;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+ul,li{
+    list-style: none;
+    float: left;
+}
+body{
+    padding-top: 70px;
+}
+.lf{
+    float: left;
+    overflow: hidden;
+}
+.rt{
+    float: right;
+    overflow: hidden;
+}
+.row{
+    width: 100%;
+}
+ul li img{
+    max-width: 100%;
+    border-radius: 5px;
+}

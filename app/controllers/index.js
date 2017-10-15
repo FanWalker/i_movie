@@ -8,8 +8,7 @@ exports.index = function(req,res){
 		.find({})
 		.populate({
 			path: 'movies',
-			select: 'title poster',
-			options: {limit: 6}
+			select: 'title poster'
 		})
 		.exec(function(err, categories){
 			if(err){

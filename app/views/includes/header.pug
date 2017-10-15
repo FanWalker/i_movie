@@ -1,23 +1,8 @@
-.container
-  .row
-    .page-header.clearfix
-    .col-md-4
-      h3= title
-    .col-md-8
-      form(method='GET', action='/results')
-        .input-group.col-sm-4.pull-right
-          input.form-control(type='text', name='q')
-          span.input-group-btn
-            button.btn.btn-default(type='submit') 搜索
-.navbar.navbar-default.navbar-fixed-top
-  .container
+.navbar.navbar-default.navbar-fixed-top(style="background-color: #ece8e8")
+  .container(style="margin-left: 500px;")
     .navbar-header
-      a.navbar-brand(href="/") #{title}
-    form.navbar-form.navbar-left(method='GET', action='/results')
-      .input-group
-          input.form-control(type='text', name='q')
-          span.input-group-btn
-            button.btn.btn-default(type='submit') 搜索
+      a.navbar-brand(href="/") #{title}                             
+      //#{title}
     if user
       p.navbar-text.navbar-right
         span 欢迎您,#{user.name}
@@ -28,6 +13,12 @@
         a.navbar-link(href="#", data-toggle="modal", data-target="#signupModal") 注册
         span &nbsp;|&nbsp;
         a.navbar-link(href="#", data-toggle="modal", data-target="#signinModal") 登录
+    .collapse.navbar-collapse
+      form.navbar-form.navbar-left(method='GET', action='/results')
+        .input-group.pull-right
+          input.form-control(type='text', name='q')
+          span.input-group-btn
+            button.btn.btn-default(type='submit') 搜索
 #signupModal.modal.fade
   .modal-dialog
     .modal-content

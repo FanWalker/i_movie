@@ -1,24 +1,112 @@
 extends ../layout.pug
 
+block link
+  link(href="/css/main.css",rel="stylesheet")
+  link(href="/css/index.css",rel="stylesheet")
 block content
-  .container
-    .row
-      each cat in categories
-        .panel.panel-info
-          .panel-heading
-            h4 
-              a(href='/results?cat='+cat._id+'&p=0') #{cat.name}
-          .panel-body
-            if cat.movies && cat.movies.length > 0
-              each item in cat.movies
-                .col-md-2
-                  h4(style="text-align:center;") #{item.title}
-                  .thumbnail
-                    a(href="/movie/"+item._id)
-                      if item.poster.indexOf('http')>-1
-                        img(src=item.poster, alt=item.title)
-                      else
-                        img(src="/upload/"+item.poster,alt=item.title)
-                    .caption
-                      h3 #{item.name}
-                      p: a.btn.btn-primary(href="/movie/"+item._id, role="button") 观看预告片
+  .container(style="margin-left: 500px;")
+    .grid-16-8.clearfix
+      .article
+        each cat in categories
+          if cat.name === '正在热映'
+            .row.movie_show
+              .panel
+                .panel-heading.movie_caption
+                  h2.head_caption.lf
+                    | #{cat.name}
+                  .change_btn.rt
+                    span.prev-btn
+                      a.btn-prev(href="javascript:void(0)")
+                    span.next-btn
+                      a.btn-next(href="javascript:void(0)")
+                  if cat.movies && cat.movies.length > 0
+                    .highlight_tip.rt
+                      span= 1
+                      span  / 
+                      span= Math.ceil(cat.movies.length / 5)
+                .panel-body.movie_content
+                  if cat.movies && cat.movies.length > 0
+                    .movie_list
+                      ul.lf.movie_ul
+                        each item in cat.movies
+                          li
+                            a(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                img(src=item.poster, alt=item.title)
+                              else
+                                img(src="/upload/"+item.poster,alt=item.title)
+                            h4: a(href="#") #{item.title}
+                            p: a.btn.btn-info(href="/movie/"+item._id, role="button") 观看预告
+        .row.movie_ad
+          a.movie_ad_link(href="https://erebor.douban.com/redirect/?ad=189321&uid=166972528&bid=ePJtdtLLv5Y&unit=movie_home_left_bottom&crtr=3%3A%2F&mark=&hn=hador15&sig=a1ef1f237b8fc998dbd93e02c45aad095106bd009a91e98ba0c33dba4ec023ab4d0440b577772a1e454deecb936a4c97d04ea3c27468b67bf9ce6defb94daad3&pid=debug_fcf02e699b364ba9e66881513732e93ffc62b3d6&target=aHR0cHM6Ly93d3cuZG91YmFuLmNvbS9ub3RlLzY0MDYzMTc3MS8=")
+            img.movie_ad_img(src="https://img3.doubanio.com/view/dale-online/dale_ad/public/040d38ec6d68ed2.jpg")
+        .row.gaia.gaia-lite.gaia-movie.slide-mode
+          each cat in categories
+            if cat.name === '最近热门电影'
+              .filter-wp
+                h2.filter-head
+                  .activate.lf #{cat.name}
+                  .filter.lf
+                    ul.tab-list
+                      li 热门
+                      li 最新
+                      li 豆瓣高分
+                      li 冷门佳片
+                      li 华语
+                      li 欧美
+                      li 韩国
+                      li 日本
+                  a.more-link.lf(href="#") 更多
+              .list-wp
+                .slider
+                  .slider-container
+                    .slider-wrapper
+                      ul.slide-page.lf
+                        each item in cat.movies
+                          li
+                            a.item(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                .cover-wp: img(src=item.poster, alt=item.title)
+                            h4: a(href="#") #{item.title}3
+                      ul.slide-page.lf
+                        each item in cat.movies
+                          li
+                            a.item(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                .cover-wp: img(src=item.poster, alt=item.title)
+                            h4: a(href="#") #{item.title}1
+                      ul.slide-page.lf
+                        each item in cat.movies
+                          li
+                            a.item(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                .cover-wp: img(src=item.poster, alt=item.title)
+                            h4: a(href="#") #{item.title}2
+                      ul.slide-page.lf
+                        each item in cat.movies
+                          li
+                            a.item(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                .cover-wp: img(src=item.poster, alt=item.title)
+                            h4: a(href="#") #{item.title}3
+                      ul.slide-page.lf
+                        each item in cat.movies
+                          li
+                            a.item(href="/movie/"+item._id)
+                              if item.poster.indexOf('http')>-1
+                                .cover-wp: img(src=item.poster, alt=item.title)
+                            h4: a(href="#") #{item.title}1
+                  .slider-ctrl
+                    a.btn-prev(href="javascript:void(0)")
+                    i.dot.activate
+                    i.dot
+                    i.dot
+                    a.btn-next(href="javascript:void(0)")
+        .row.gaia.gaia-lite.gaia-tv.slide-mode
+
+        .row.gallery-frames
+
+        .row#reviews
+
+      .aside
+  script(src="/js/index.js")

@@ -20,7 +20,7 @@ var categorySchema = new Schema({
   }
 });
 
-// movieSchema.pre 表示每次存储数据之前都先调用这个方法
+// categorySchema.pre 表示每次存储数据之前都先调用这个方法
 categorySchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
@@ -30,7 +30,7 @@ categorySchema.pre('save', function (next) {
     next();
 });
 
-// movieSchema 模式的静态方法
+// categorySchema 模式的静态方法
 categorySchema.statics = {
     fetch: function (cb) {    //取出数据库中的所有数据
         return this
@@ -45,5 +45,5 @@ categorySchema.statics = {
     }
 }
 
-// 导出movieSchema模式
+// 导出categorySchema模式
 module.exports = categorySchema;

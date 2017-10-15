@@ -1,0 +1,243 @@
+.container{
+	margin-left: 500px;
+}
+.article{
+	width: 620px;
+	float: left;
+}
+.container h2{
+	font-size: 17px;
+	height: 32px;
+}
+
+/******** movie_show 头部标题与按钮等 **************/
+.movie_show{
+	width: 100%;
+	height: 270px;
+	margin: 20px 0 40px 60px;
+	padding: 0px;
+	position: relative;
+}
+
+.panel .panel-heading{
+	padding: 5px;
+	border-bottom: 1px solid #ecdada;
+}
+.movie_caption{
+	width: 100%;
+	height: 35px;
+	position: relative;	
+	margin-bottom: 10px;
+}
+.head_caption{
+	width: 74px;
+	height: 35px;
+	margin:5px 5px 0 1px;
+	font-size: 1rem;
+	background-position: -15px -110px;
+}
+.highlight_tip{
+	margin:7px 15px 3px 0px;
+	display: inline;
+	height: 30px;
+	text-align: center;
+}
+.highlight_tip span{
+	float: left;
+	width: 7px;
+	height: 14px;
+	line-height: 14px;
+	font-size: 12px;
+	margin: 0 2px;
+}
+.highlight_tip .current{
+	background-position: 0 -220px;
+}
+.change_btn{
+	margin:3px -3px 5px 0px;
+}
+
+.change_btn a{
+	display: block;
+	float: left;
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
+	cursor: pointer;
+	background: url(/img/slide_swithc_2.png) no-repeat 0 0;
+}
+.change_btn .btn-prev{
+	background-position: 0 0;
+}
+.change_btn .btn-next{
+	background-position: -18px 0px;
+
+}
+
+/***************** movie_show 视频展示列表 ******************/
+.container .row .panel .panel-body{
+	padding: 0px;
+}
+.movie_content{
+	width: 100%;
+	height: 220px;
+	position: absolute;
+	overflow: hidden;
+}
+.movie_list{
+	position: absolute;
+	width: 1500px;
+	top: 0px;
+	left: 0px;
+}
+.movie_content ul{
+	padding-left: 9px;
+}
+.movie_content ul li{
+	float: left;
+	margin-top: 5px;
+	margin-right: 25px;
+}
+.movie_content ul li a{
+	display: block;
+	width: 100px;
+}
+.movie_content ul li img{
+	max-width: 100%; 
+	height: 140px; 
+	border-radius: 5px;
+}
+.movie_content ul li h4{
+	font-size: 0.5em;
+	margin: 5px 0px 0px 0px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.movie_content ul li h4 a{
+	display: block; 
+	width: 100px;
+	height: 30px;
+	overflow: hidden;		/* 超出部分隐藏 */
+	white-space: nowrap;		/* 内容显示为一行 */
+	text-overflow: ellipsis;	/* 内容超出后显示为省略号 */
+}
+
+/* **********************  movie_ad栏样式 *****************************/
+.movie_ad{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.movie_ad .movie_ad_link{
+	margin-left: 6px;
+}
+.movie_ad .movie_ad_img{
+	max-width: 98%;
+}
+/* *****************.row.gala.gala-lite.gala-movie.slide-mode标题栏样式 ************************/
+
+.filter-wp{
+	overflow: hidden;
+	height: 60px;
+	line-height: 60px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ecdada;
+	margin-bottom: 10px;
+}
+.filter-wp .filter-head{
+	padding-top: 5px;
+	height: 32px;
+	line-height: 32px;
+}
+.filter-wp .filter{
+	width: 450px;
+	margin-left: 14px;
+	padding-bottom: -10px;
+}
+.gaia .tab-list{
+	width: auto;
+	display: inline;
+}
+.gaia .tab-list li{
+	margin-right: 12px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+/* *****************.row.gala.gala-lite.gala-movie.slide-mode滚动栏样式 ************************/
+.slider-container{
+	position: relative;
+	width: 100%;
+	height: 360px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.slider-wrapper{
+	position: absolute;
+	width: 4900px;
+	left: -645px;
+}
+.list-wp ul li{
+	margin-right: 27px;
+}
+.slide-page{
+	width: 645px;
+	padding-left: 9px;
+	text-align: center;
+}
+.slide-page .cover-wp{
+	background-size: 100%;
+	height: 140px;
+	overflow: hidden;
+}
+.slide-page h4{
+	font-size: 0.5em;
+	margin: 5px 0px 0px 0px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.slide-page h4 a{
+	display: block; 
+	height: 30px;
+	overflow: hidden;		/* 超出部分隐藏 */
+	white-space: nowrap;		/* 内容显示为一行 */
+	text-overflow: ellipsis;	/* 内容超出后显示为省略号 */
+}
+
+.slider-ctrl{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.slider-ctrl a, .slider-ctrl .dot{
+	display: inline-block;
+	margin: 0;
+	cursor: pointer;
+}
+.slider-ctrl a{
+	width: 18px;
+	height: 18px;
+	background: url(/img/slide_swithc_2.png) no-repeat;
+}
+.slider-ctrl .btn-prev{
+	background-position: 0 0;
+	margin-right: 10px;
+}
+.slider-ctrl .btn-next{
+	background-position: -18px 0;
+	margin-left: 5px;
+}
+.slider-ctrl .dot{
+	width: 6px;
+	height: 6px;
+	background-color: #D8D8D8;
+	border-radius: 50%;
+	margin-bottom: 8px;
+	margin-right: 5px;
+}
+.dot.activate{
+	background-color: #6198D7;
+}
