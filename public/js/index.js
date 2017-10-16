@@ -4,9 +4,31 @@ var $parent,$movie_list,$movie_content,
 	$pageIndex,$pageCount;
 var v_width, len, page_count;
 
+var $mov_sliderWrapper = $(".gaia-movie .slider-wrapper").eq(0),
+	$tv_sliderWrapper = $(".gaia-tv .slider-wrapper").eq(0),
+	$movie_dots = $(".gaia-movie .dot"),
+	$tv_dots = $(".gaia-tv .dot"),
+	$tv_index = 0, $mov_index = 0;
 
 $(function(){
 	$(".highlight_tip span:first").addClass("current");
+
+	$(".gaia-movie a.btn-prev").click(function(){
+		prev_slidePage($movie_dots, $mov_sliderWrapper);
+	})
+	$(".gaia-movie a.btn-next").click(function(){
+		next_slidePage($movie_dots, $mov_sliderWrapper);
+	})
+
+	$(".gaia-tv a.btn-prev").click(function(){
+		prev_slidePage($tv_dots, $tv_sliderWrapper);
+	})
+	$(".gaia-tv a.btn-next").click(function(){
+		next_slidePage($tv_dots, $tv_sliderWrapper);
+	})
+
+	slideDote($movie_dots, $mov_sliderWrapper);
+	slideDote($tv_dots, $tv_sliderWrapper);
 })
 
 function findObj(obj){
@@ -68,23 +90,26 @@ $("span.next-btn").click(function(){
 	
 });
 
-var index = 0;
-var $sliderWrapper = $(".slider-wrapper").eq(0);
 
-$("a.btn-prev").click(function(){
-	prev_slidePage();
-})
-$("a.btn-next").click(function(){
-	next_slidePage()
-})
-function prev_slidePage(){
-	index--;
-	if(index < 0){
-		index = 2;
+
+
+function prev_slidePage(dots,sliderWrapper){
+	if(dots.parent().hasClass("movie")){
+		$mov_index--;
+		if($mov_index < 0){
+			$mov_index = 2;
+		}
+		dots.eq(($mov_index)).addClass("activate").siblings().removeClass("activate");
 	}
-	//showCurrentDot();
-	$(".dot").eq((index)).addClass("activate").siblings().removeClass("activate");
-	var currentLeft = $sliderWrapper.css("left"),
+	else{
+		$tv_index--;
+		if($tv_index < 0){
+			$tv_index = 2;
+		}
+		dots.eq(($tv_index)).addClass("current").siblings().removeClass("current");
+	}
+	
+	var currentLeft = sliderWrapper.css("left"),
 		newLeft;
 	if(currentLeft === "0px"){
 		newLeft = -1290;
@@ -92,28 +117,82 @@ function prev_slidePage(){
 	else{
 		newLeft = parseInt(currentLeft)+645;
 	}
-	$sliderWrapper.css("left",newLeft + "px");
+	sliderWrapper.css("left",newLeft + "px");
 }
-function next_slidePage(){
-	index++;
-	if(index > 2){
-		index = 0;
+function next_slidePage(dots,sliderWrapper){
+	if(dots.parent().hasClass("movie")){
+		$mov_index++;
+		if($mov_index > 2){
+			$mov_index = 0;
+		}
+		dots.eq(($mov_index)).addClass("activate").siblings().removeClass("activate");
 	}
-	//showCurrentDot();
-	$(".dot").eq((index)).addClass("activate").siblings().removeClass("activate");
-	var currentLeft = $sliderWrapper.css("left"),
+	else{
+		$tv_index++;
+		if($tv_index > 2){
+			$tv_index = 0;
+		}
+		dots.eq(($tv_index)).addClass("current").siblings().removeClass("current");
+	}
+	var currentLeft = sliderWrapper.css("left"),
 		newLeft;
-	console.log(currentLeft);
 	if(currentLeft === "-2580px"){
 		newLeft = -1290;
 	}
 	else{
 		newLeft = parseInt(currentLeft)-645;
 	}
-	$sliderWrapper.css("left",newLeft + "px");
+	sliderWrapper.css("left",newLeft + "px");
 }
-function showCurrentDot(){
-	for(var i=0; i<dots.length; i++){
-		dots[i]
+function slideDote(dots,sliderWrapper){
+	for(var i=0; i< dots.length; i++){
+		(function(i){
+			dots.eq(i).bind("click",function(){
+				if(dots.parent().hasClass("movie")){
+					console.log("movie"+i);
+					var current = sliderWrapper.css("left");
+					var currentLeft = parseInt(current);
+					var gap = $mov_index - i;  //(3-1)=2
+					if($mov_index == 2 &&  currentLeft!==-1935){
+						gap = gap - 3;
+					}
+					if($mov_index == 0 && currentLeft!==-645){
+						gap = 3 + gap;
+					}
+					$mov_index = i; 
+					dots.eq(($mov_index)).addClass("activate").siblings().removeClass("activate");
+					sliderWrapper.css("left",currentLeft + gap*645 + "px");
+				}
+				else{
+					console.log("tv"+i);
+					var current = sliderWrapper.css("left");
+					var currentLeft = parseInt(current);
+					console.log(currentLeft);
+					var gap = $tv_index - i;  //(3-1)=2
+					if($tv_index == 2 &&  currentLeft!==-1935){
+						gap = gap - 3;
+					}
+					if($tv_index == 0 && currentLeft!==-645){
+						gap = 3 + gap;
+					}
+					$tv_index = i; 
+					dots.eq(($tv_index)).addClass("current").siblings().removeClass("current");
+					sliderWrapper.css("left",currentLeft + gap*645 + "px");
+				}
+				//var gap = index - i;  //(3-1)=2
+				/*var current = sliderWrapper.css("left");
+				var currentLeft = parseInt(current);
+				xif(index == 2 &&  currentLeft!==-1935){
+					gap = gap - 3;
+				}
+				if(index == 0 && currentLeft!==-645){
+					gap = 3 + gap;
+				}
+				sliderWrapper.css("left",currentLeft + gap*645 + "px");
+				index = i;   //设置当前点亮的小圆点为i
+				dots.eq((index)).addClass("activate").siblings().removeClass("activate");*/
+			}) 
+		})(i)
 	}
 }
+

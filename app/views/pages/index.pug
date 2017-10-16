@@ -62,48 +62,118 @@ block content
                   .slider-container
                     .slider-wrapper
                       ul.slide-page.lf
-                        each item in cat.movies
-                          li
-                            a.item(href="/movie/"+item._id)
-                              if item.poster.indexOf('http')>-1
-                                .cover-wp: img(src=item.poster, alt=item.title)
-                            h4: a(href="#") #{item.title}3
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第二部
                       ul.slide-page.lf
-                        each item in cat.movies
-                          li
-                            a.item(href="/movie/"+item._id)
-                              if item.poster.indexOf('http')>-1
-                                .cover-wp: img(src=item.poster, alt=item.title)
-                            h4: a(href="#") #{item.title}1
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第一部
                       ul.slide-page.lf
-                        each item in cat.movies
-                          li
-                            a.item(href="/movie/"+item._id)
-                              if item.poster.indexOf('http')>-1
-                                .cover-wp: img(src=item.poster, alt=item.title)
-                            h4: a(href="#") #{item.title}2
+                        each item, index in cat.movies
+                          if (index>9 && index < 20)
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}
                       ul.slide-page.lf
-                        each item in cat.movies
-                          li
-                            a.item(href="/movie/"+item._id)
-                              if item.poster.indexOf('http')>-1
-                                .cover-wp: img(src=item.poster, alt=item.title)
-                            h4: a(href="#") #{item.title}3
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第二部
                       ul.slide-page.lf
-                        each item in cat.movies
-                          li
-                            a.item(href="/movie/"+item._id)
-                              if item.poster.indexOf('http')>-1
-                                .cover-wp: img(src=item.poster, alt=item.title)
-                            h4: a(href="#") #{item.title}1
-                  .slider-ctrl
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第一部
+                  .slider-ctrl.movie
                     a.btn-prev(href="javascript:void(0)")
                     i.dot.activate
                     i.dot
                     i.dot
                     a.btn-next(href="javascript:void(0)")
         .row.gaia.gaia-lite.gaia-tv.slide-mode
-
+          each cat in categories
+            if cat.name === '最近热门电影'
+              .filter-wp
+                h2.filter-head
+                  .activate.lf #{cat.name}
+                  .filter.lf
+                    ul.tab-list
+                      li 热门
+                      li 国产剧
+                      li 综艺
+                      li 美剧
+                      li 日剧
+                      li 韩剧
+                      li 日本动画
+                      li 纪录片
+                  a.more-link.lf(href="#") 更多
+              .list-wp
+                .slider
+                  .slider-container
+                    .slider-wrapper
+                      ul.slide-page.lf
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第二部
+                      ul.slide-page.lf
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第一部
+                      ul.slide-page.lf
+                        each item, index in cat.movies
+                          if (index>9 && index < 20)
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}
+                      ul.slide-page.lf
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第二部
+                      ul.slide-page.lf
+                        each item, index in cat.movies
+                          if index < 10
+                            li
+                              a.item(href="/movie/"+item._id)
+                                if item.poster.indexOf('http')>-1
+                                  .cover-wp: img(src=item.poster, alt=item.title)
+                              h4: a(href="#") #{item.title}第一部
+                  .slider-ctrl
+                    a.btn-prev(href="javascript:void(0)")
+                    i.dot.current
+                    i.dot
+                    i.dot
+                    a.btn-next(href="javascript:void(0)")
         .row.gallery-frames
 
         .row#reviews

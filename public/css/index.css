@@ -191,14 +191,15 @@
 	height: 140px;
 	overflow: hidden;
 }
-.slide-page h4{
+.slide-page li h4{
 	font-size: 0.5em;
 	margin: 5px 0px 0px 0px;
+	width: 100px;
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
 }
-.slide-page h4 a{
+.slide-page li h4 a{
 	display: block; 
 	height: 30px;
 	overflow: hidden;		/* 超出部分隐藏 */
@@ -238,6 +239,6 @@
 	margin-bottom: 8px;
 	margin-right: 5px;
 }
-.dot.activate{
+.dot.activate,.dot.current{
 	background-color: #6198D7;
 }
