@@ -57,37 +57,37 @@ nodejs+mongoDB建站
 
 ### 项目目录结构
 
-    ├── app.js               项目入口文件
-    ├── app                  Node后端MVC文件目录
-    │   ├── controllers      控制器目录
-    │   │   ├── category.js  
-    │   │   ├── comment.js     
-    |   |   ├── index.js
-    |   |   ├── movie.js
-    │   │   └── user.js      
-    │   ├── models        模型目录
-    |   |   ├── category.js
-    │   │   ├── comment.js      
-    |   |   ├── movie.js
-    │   │   └── user.js
-    │   ├── schemas       模式目录,定义数据库中所需表的结构
-    |   |   ├── category.js
-    │   │   ├── comment.js      
-    |   |   ├── movie.js
-    │   │   └── user.js
-    │   └── views         视图文件目录
-    │       ├── includes
-    │       └── pages
-    ├── node_modules      node模块目录
-    ├── public            静态文件目录
-    │   ├── css        css文件目录
-    │   ├── img        公共图片目录
-    │   ├── js         js文件目录
-    │   ├── libs          经过gulp处理后文件所在目录
-    │   │   ├── bootstrap
-    │   │   └── jquery
-    │   └── upload        用户自定义上传图片存储目录
-    ├── config             路由目录
-    │   └── router.js
-    ├── gruntfile.js       gruntfile文件
-    └── package.json
+        ├── app.js               项目入口文件
+        ├── app                  Node后端MVC文件目录
+        │   ├── controllers      控制器目录
+        │   │   ├── category.js  
+        │   │   ├── comment.js     
+        |   |   ├── index.js
+        |   |   ├── movie.js
+        │   │   └── user.js
+        │   ├── models        模型目录
+        |   |   ├── category.js
+        │   │   ├── comment.js      
+        |   |   ├── movie.js
+        │   │   └── user.js
+        │   ├── schemas       模式目录,定义数据库中所需表的结构
+        |   |   ├── category.js
+        │   │   ├── comment.js      
+        |   |   ├── movie.js
+        │   │   └── user.js
+        │   └── views         视图文件目录
+        │       ├── includes
+        │       └── pages
+        ├── node_modules      node模块目录
+        ├── public            静态文件目录
+        │   ├── css           css文件目录
+        │   ├── img           公共图片目录
+        │   ├── js            js文件目录
+        │   ├── libs          经过gulp处理后文件所在目录
+        │   │   ├── bootstrap
+        │   │   └── jquery
+        │   └── upload        用户自定义上传图片存储目录
+        ├── config            路由目录
+        │   └── router.js
+        ├── gruntfile.js      gruntfile文件
+        └── package.json
